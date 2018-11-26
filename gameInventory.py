@@ -13,7 +13,6 @@ def display_inventory(inventory):
         print(str(value) + " " + key)
         sum_value += value
     print("Total number of items: " + str(sum_value))
-    pass
 
 # Adds to the inventory dictionary a list of items from added_items.
 
@@ -25,7 +24,6 @@ def add_to_inventory(inventory, added_items):
         else:
             inventory.update({i: 1})
     return inventory
-    pass
 
 
 # Takes your inventory and displays it in a well-organized table with
@@ -41,7 +39,7 @@ def print_table(inventory, order=None):
     # The length og the longest string
     max_length = max(len(i) for i in inventory)
     print("Inventory:\n")
-    print("count".rjust(7) + "item name".rjust(max_length + 4))
+    print("count".rjust(7) + "item name".rjust(13))
     print("-"*(max_length + 11))
 
     if order == None:
@@ -58,7 +56,6 @@ def print_table(inventory, order=None):
 
     print("-"*(max_length + 11))
     print("Total number of items: " + str(sum(inventory.values())))
-    pass
 
 
 # Imports new inventory items from a file
@@ -69,10 +66,9 @@ def import_inventory(inventory, filename="test_inventory.csv"):
     read_file = open(filename, "r")
     content = read_file.read()
     list_of_content = [str(item) for item in content.split(",")]
-    inv_updated = add_to_inventory(inv, list_of_content)
+    add_to_inventory(inventory, list_of_content)
     read_file.close()
-    return inv_updated
-    pass
+    return inventory
 
 
 # Exports the inventory into a .csv file.
@@ -87,7 +83,6 @@ def export_inventory(inventory, filename="export_inventory.csv"):
     write_file = open(filename, "w")
     write_file.write(list_to_export)
     write_file.close()
-    pass
 
 
 inv = {"arrow": 12, "gold coin": 42, "rope": 1, "torch": 6, "dagger": 1}
